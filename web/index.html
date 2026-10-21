@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movie Ticket Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <p class="now-showing">Now showing on our only screen</p>
+    <h1 id="movieTitle">Loading…</h1>
+    <p id="movieInfo" class="movie-info"></p>
+  </header>
+
+  <main class="layout">
+
+    <section class="hall" aria-labelledby="pickTitle">
+      <h2 id="pickTitle" class="visually-hidden">Choose your seats</h2>
+
+      <div class="shows" id="shows" role="tablist" aria-label="Show times"></div>
+
+      <div class="screen-wrap" aria-hidden="true">
+        <div class="screen">Screen</div>
+      </div>
+
+      <div class="seat-grid" id="seatGrid" aria-label="Seat map"></div>
+
+      <ul class="legend">
+        <li><span class="swatch free"></span> Available</li>
+        <li><span class="swatch selected"></span> Your pick</li>
+        <li><span class="swatch booked"></span> Booked</li>
+      </ul>
+      <p class="price-note" id="priceNote"></p>
+    </section>
+
+    <aside class="panel" aria-labelledby="sumTitle">
+      <h2 id="sumTitle">Your booking</h2>
+      <dl class="summary">
+        <dt>Show</dt><dd id="sumShow">—</dd>
+        <dt>Seats</dt><dd id="sumSeats">None selected</dd>
+        <dt>Total</dt><dd id="sumTotal" class="total">₹0</dd>
+      </dl>
+
+      <div class="form">
+        <label for="name">Full name</label>
+        <input id="name" type="text" autocomplete="name" placeholder="e.g. Priya Raman">
+
+        <label for="phone">Phone number</label>
+        <input id="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile number">
+
+        <p id="formError" class="error" role="alert"></p>
+        <button id="bookBtn" class="btn primary" disabled>Book tickets</button>
+      </div>
+
+      <details class="manage">
+        <summary>Find or cancel a booking</summary>
+        <label for="lkId">Ticket ID</label>
+        <input id="lkId" type="text" placeholder="e.g. TKT1001">
+        <label for="lkPhone">Phone number used</label>
+        <input id="lkPhone" type="tel" inputmode="numeric" maxlength="10">
+        <div class="row">
+          <button id="lkBtn" class="btn">Find booking</button>
+          <button id="cancelBtn" class="btn danger">Cancel booking</button>
+        </div>
+        <p id="lkMsg" class="msg" role="status"></p>
+      </details>
+    </aside>
+
+  </main>
+
+  <dialog id="ticketDialog" aria-labelledby="ticketHeading">
+    <article class="ticket">
+      <div class="ticket-main">
+        <p class="ticket-kicker" id="ticketHeading">Booking confirmed</p>
+        <h3 id="tMovie"></h3>
+        <dl class="ticket-details">
+          <div><dt>Show</dt><dd id="tTime"></dd></div>
+          <div><dt>Seats</dt><dd id="tSeats"></dd></div>
+          <div><dt>Name</dt><dd id="tName"></dd></div>
+          <div><dt>Paid</dt><dd id="tTotal"></dd></div>
+        </dl>
+      </div>
+      <div class="ticket-stub">
+        <p>Ticket ID</p>
+        <strong id="tId"></strong>
+        <small id="tDate"></small>
+      </div>
+    </article>
+    <p class="ticket-hint">Keep your ticket ID. You need it with your phone number to find or cancel this booking.</p>
+    <button id="closeTicket" class="btn primary">Done</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
